@@ -11,7 +11,7 @@ import com.ijse.springintro.repository.TaskRepository;
 @Service
 public class TaskServiceImpl implements TaskService{
     
-    @Autowired  //automatically injecting the dependencies
+    @Autowired //automatically injecting the dependencies
     private TaskRepository taskRepository;
 
     @Override
