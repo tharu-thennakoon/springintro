@@ -9,7 +9,7 @@ import com.ijse.springintro.Entity.Task;
 
 @Service
 public interface TaskService {
-    List<Task> geTasksList();
+    List<Task> getTasksList();
     Task createTask(Task task);
 
     

@@ -18,6 +18,11 @@ public class TaskServiceImpl implements TaskService{
     public List<Task> getTasksList() {
         return taskRepository.findAll();
     }
-tttt
+
+    @Override
+    public Task createTask(Task task){
+        return taskRepository.save(task);
+    }
+
     
 }
