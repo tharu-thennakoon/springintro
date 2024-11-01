@@ -24,7 +24,20 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public Task createTask(@RequestBody Task task) {
-        return taskService.createTask(task) ;
+    public String createTask(@RequestBody Task task) {
+
+        if(task.getTaskName() == null || task.getTaskName() == ""){
+            //return error
+            return "Please enter a valid task name";
+        }
+
+        if(task.getTaskName() == null){
+            //return error
+            return "Please enter a valid number for priority";
+        }
+
+        
+        taskService.createTask(task) ;
+        return "Task Added succesfully";
     }
 }
