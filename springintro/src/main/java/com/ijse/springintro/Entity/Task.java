@@ -18,7 +18,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //primary key is automatically genarate
     private Long id;
     private String taskName;
-    private Integer piority;
+    private Integer priority;
     private LocalDateTime dueDate;
 
     

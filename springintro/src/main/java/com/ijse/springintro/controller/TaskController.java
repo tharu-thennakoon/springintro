@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ijse.springintro.Entity.Task; // Import Task
@@ -23,7 +24,7 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public Task createTask(Task task) {
+    public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task) ;
     }
 }
