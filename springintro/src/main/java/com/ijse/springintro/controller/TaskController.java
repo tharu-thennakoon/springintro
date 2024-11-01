@@ -2,6 +2,7 @@ package com.ijse.springintro.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,25 +20,27 @@ public class TaskController {
 
     //endpoints
     @GetMapping("/tasks")
-    public List<Task> getAllTasks() {
-        return taskService.getTasksList();
+    public ResponseEntity<List<Task>> getAllTasks() {
+        List<Task> taskList =taskService.getTasksList();
+        
+        return ResponseEntity.status(200).body(taskList);
     }
 
     @PostMapping("/tasks")
-    public String createTask(@RequestBody Task task) {
+    public ResponseEntity<String> createTask(@RequestBody Task task) {
 
         if(task.getTaskName() == null || task.getTaskName() == ""){
             //return error
-            return "Please enter a valid task name";
+            return ResponseEntity.status(422).body("Please Enter a valid Task name");
         }
 
         if(task.getTaskName() == null){
             //return error
-            return "Please enter a valid number for priority";
+            return ResponseEntity.status(422).body("Please enter a valid number for priority");
         }
 
         
         taskService.createTask(task) ;
-        return "Task Added succesfully";
+        return ResponseEntity.status(201).body("Task Added succesfully");
     }
 }
