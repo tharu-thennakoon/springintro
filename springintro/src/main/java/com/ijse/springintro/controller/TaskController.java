@@ -46,7 +46,7 @@ public class TaskController {
         return ResponseEntity.status(201).body("Task Added succesfully");
     }
 
-    @GetMapping("/tasks{taskID}")  //added path variable to fetch id from client id
+    @GetMapping("/tasks/{taskID}")  //added path variable to fetch id from client id
     public ResponseEntity<Task> getTaskById(@PathVariable Long taskId){
         Task task = taskService.geTaskByID(taskId);
 
