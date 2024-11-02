@@ -44,4 +44,8 @@ public class TaskController {
         taskService.createTask(task) ;
         return ResponseEntity.status(201).body("Task Added succesfully");
     }
+
+    @GetMapping("/tasks{taskID}")  //added path variable to fetch id from client id
+
+
 }
