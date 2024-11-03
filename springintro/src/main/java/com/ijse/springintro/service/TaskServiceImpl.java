@@ -37,7 +37,10 @@ public class TaskServiceImpl implements TaskService{
             return null;
         }
         else{
-            
+            existingTask.setTaskName(task.getTaskName());
+            existingTask.setPriority(task.getPriority());
+            existingTask.setDueDate(task.getDueDate());
+            return taskRepository.save(existingTask);
         }
     }
 }
