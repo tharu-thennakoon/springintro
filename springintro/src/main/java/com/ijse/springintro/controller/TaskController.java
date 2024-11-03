@@ -47,7 +47,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{taskID}")  //added path variable to fetch id from client id
-    public ResponseEntity<Task> getTaskById(@PathVariable Long taskId){
+    public ResponseEntity<Task> getTaskById(@PathVariable Long taskId){  //can multiple path add in this way
         Task task = taskService.geTaskByID(taskId);
 
         if(task == null ){
