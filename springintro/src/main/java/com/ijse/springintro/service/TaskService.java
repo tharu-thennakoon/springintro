@@ -13,4 +13,5 @@ public interface TaskService {
     Task createTask(Task task);  //creating
     Task geTaskByID(Long id);  //finding a task by it's primary key
     Task updateTask(Long id, Task task); //find task and update
+    void deleteTask(Long id); //delete task
 }
