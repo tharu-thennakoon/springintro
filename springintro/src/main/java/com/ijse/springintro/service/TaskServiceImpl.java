@@ -29,5 +29,15 @@ public class TaskServiceImpl implements TaskService{
         return taskRepository.findById(id).orElse(null);
     }
 
-    
+    @Override
+    public Task updateTask(Long id, Task task) {
+        Task existingTask = taskRepository.findById(id).orElse(null);
+         
+        if(existingTask == null){
+            return null;
+        }
+        else{
+            
+        }
+    }
 }
