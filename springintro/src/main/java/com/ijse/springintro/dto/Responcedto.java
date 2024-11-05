@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Responcedto {
-    private String message;
+    private String message;   
 }
