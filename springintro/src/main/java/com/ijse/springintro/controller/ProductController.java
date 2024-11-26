@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.ijse.springintro.Entity.Product;
+import com.ijse.springintro.Entity.Category;
+import com.ijse.springintro.dto.ProductReqDTO;
+import com.ijse.springintro.service.CategoryService;
 import com.ijse.springintro.service.ProductService;
 
 @Controller
@@ -17,6 +20,9 @@ public class ProductController {
     
     @Autowired
     private ProductService productService;
+    
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
@@ -25,7 +31,16 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@RequestBody ProductReqDTO productReqDTO) {
+        Product product = new Product();
+        product.setName(productReqDTO.getName());
+        product.setPrice(productReqDTO.getPrice());
+        product.setDescription(productReqDTO.getDescription());
+        
+        // Find category by categoryId id in productReqDTO and assign it to new Product.
+        Category category = categoryService.getCategoryById(productReqDTO.getCategoryId());
+        product.setCategory(category);
+
         Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(201).body(createdProduct);
     }

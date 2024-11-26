@@ -10,4 +10,5 @@ import com.ijse.springintro.Entity.Category;
 public interface CategoryService {
     List<Category> getAllCategories();
     Category createCategory(Category category);
+    Category getCategoryById(Long Id);
 }
